@@ -1,7 +1,6 @@
 const inquirer = require("inquirer");
 const generateHTML = require(".generateHTML");
 const axios = require("axios");
-const pdf = require("html-pdf");
 const fs = require('fs');
 
 
@@ -21,7 +20,7 @@ inquirer
     {
         type: "list",
         message: "Select your role",
-        choices: ["Engineer", "Intern", "Manager"],
+        choices: ["Engineer", "Intern", "Manager", "Employee"],
         name: "role"
 
     }])
