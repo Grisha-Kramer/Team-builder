@@ -43,7 +43,7 @@ const cards = require("./Develop/templates/cards");
             }
             ]).then((inputs)=> {
                 let engineer = new Engineer(inputs.name, inputs.id, inputs.email, inputs.github);
-                writeHTML(engineer)
+                writeHTML(engineer, `engineer`)
               
             })
         }
@@ -72,7 +72,7 @@ const cards = require("./Develop/templates/cards");
             ]).then((inputs)=>{
                 let manager = new Manager(inputs.name, inputs.id, inputs.email, inputs.office)
                 
-                writeHTML(manager)
+                writeHTML(manager, `manager`)
               
             })
         }
@@ -101,16 +101,24 @@ const cards = require("./Develop/templates/cards");
             ]).then((inputs)=>{
                 let intern = new Intern(inputs.name, inputs.id, inputs.email, inputs.school)
 
-                writeHTML(intern)
+                writeHTML(intern, `intern`)
             });
         }
     })
       
-    function writeHTML(employee) {
+    function writeHTML(employee, type) {
         const head = cards.header()
         const foot = cards.footer()
         
-        const store = cards.manager(employee)
+        if(type == "engineer"){
+            var store = cards.engineer(employee)
+        } 
+        else if(type == "intern"){
+            var store = cards.intern(employee)
+        }
+        else if(type =="manager"){
+            var store = cards.manager(employee)
+        }
 
         const concatenate = head + store + foot
         fs.writeFile("./Develop/output/team.html", concatenate, function(err){
