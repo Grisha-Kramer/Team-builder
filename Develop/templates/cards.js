@@ -69,5 +69,5 @@ module.exports = {
     engineer: engineerCard,
     intern: internCard,
     header: headerCard,
-    footerCard: footerCard,
+    footer: footerCard,
 }

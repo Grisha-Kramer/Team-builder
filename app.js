@@ -44,11 +44,21 @@ const cards = require("./Develop/templates/cards");
             ]).then((inputs)=> {
                 let engineer = new Engineer(inputs.name, inputs.id, inputs.email, inputs.github);
                 console.log(engineer)
+
+                const head = cards.header()
+                console.log(head)
                 const store = cards.engineer(engineer)
                 console.log(store)
-                fs.writeFile("team.html", store, function (err) {
+                const foot = cards.footer()
+                console.log(foot)
+                const concatenate = head + store + foot
+                fs.writeFile("team.html", concatenate, function (err) {
                     console.log(err)
                 })
+
+                
+
+                
                 // Team.splice(team.length-1,0,engineer.getHTML());
                 // makeTeam();
             })
