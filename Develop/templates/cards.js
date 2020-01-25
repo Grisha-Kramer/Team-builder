@@ -10,7 +10,7 @@ const headerCard = function() {
     <body>
         <div class="jumbotron jumbotron-fluid text-center bg-dark">
             <div class="container">
-            <h1 class="diplay-4 text-light">Your Team</h1>
+            <h1 class="display-4 text-light">Your Team</h1>
             </div>
         </div>
         <div class="container">

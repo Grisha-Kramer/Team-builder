@@ -7,6 +7,8 @@ const Engineer = require("./Develop/lib/Engineer");
 const open = require("open");
 const cards = require("./Develop/templates/cards");
 
+let injectHTML = ``
+
 runAgain();
 
 function runAgain() {
@@ -45,7 +47,7 @@ function runAgain() {
             }
             ]).then((inputs)=> {
                 let engineer = new Engineer(inputs.name, inputs.id, inputs.email, inputs.github);
-                writeHTML(engineer, `engineer`)
+                handleAnswers(engineer, `engineer`)
               
             })
         }
@@ -74,7 +76,7 @@ function runAgain() {
             ]).then((inputs)=>{
                 let manager = new Manager(inputs.name, inputs.id, inputs.email, inputs.office)
                 
-                writeHTML(manager, `manager`)
+                handleAnswers(manager, `manager`)
               
             })
         }
@@ -103,17 +105,23 @@ function runAgain() {
             ]).then((inputs)=>{
                 let intern = new Intern(inputs.name, inputs.id, inputs.email, inputs.school)
 
-                writeHTML(intern, `intern`)
+                handleAnswers(intern, `intern`)
             });
         }
     })
-} // end of runAgain     
+} // end of runAgain 
 
-
-    function writeHTML(employee, type) {
+    function writeHTML(html) {
         const head = cards.header()
         const foot = cards.footer()
-        
+        html = head + html + foot
+        fs.writeFile("./Develop/output/team.html", html, function(err){
+            console.log(err)
+
+        })
+    }
+
+    function handleAnswers(employee, type) {
         if(type == "engineer"){
             var store = cards.engineer(employee)
         } 
@@ -123,28 +131,20 @@ function runAgain() {
         else if(type =="manager"){
             var store = cards.manager(employee)
         }
+        injectHTML = injectHTML + store
 
-        const concatenate = head + store + foot
-        fs.writeFile("./Develop/output/team.html", concatenate, function(err){
-            console.log(err)
-
-            inquirer.prompt([{
-                type: "list",
-                message: "Add more team members",
-                choices: ["Yes", "No"],
-                name: "More"
-            }]).then(function(answer) {
-                if(answer.More == "Yes") {
+        inquirer.prompt([{
+            type: "list",
+            message: "Add more team members",
+            choices: ["Yes", "No"],
+            name: "More"
+        }]).then(function(answer) {
+            if(answer.More == "Yes") {
                 runAgain();
-                }
-                else if(answer.More == "No"){
-                    console.log("Thanks!")
-                }
-
-            })
-
- 
-            
-            
+            }
+            else if(answer.More == "No"){
+                console.log("Thanks!")
+                writeHTML(injectHTML);
+            }
         })
     }
