@@ -7,7 +7,9 @@ const Engineer = require("./Develop/lib/Engineer");
 const open = require("open");
 const cards = require("./Develop/templates/cards");
 
+runAgain();
 
+function runAgain() {
     return inquirer
     .prompt ([
         {
@@ -105,7 +107,9 @@ const cards = require("./Develop/templates/cards");
             });
         }
     })
-      
+} // end of runAgain     
+
+
     function writeHTML(employee, type) {
         const head = cards.header()
         const foot = cards.footer()
@@ -123,5 +127,24 @@ const cards = require("./Develop/templates/cards");
         const concatenate = head + store + foot
         fs.writeFile("./Develop/output/team.html", concatenate, function(err){
             console.log(err)
+
+            inquirer.prompt([{
+                type: "list",
+                message: "Add more team members",
+                choices: ["Yes", "No"],
+                name: "More"
+            }]).then(function(answer) {
+                if(answer.More == "Yes") {
+                runAgain();
+                }
+                else if(answer.More == "No"){
+                    console.log("Thanks!")
+                }
+
+            })
+
+ 
+            
+            
         })
     }
