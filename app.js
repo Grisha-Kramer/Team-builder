@@ -43,22 +43,8 @@ const cards = require("./Develop/templates/cards");
             }
             ]).then((inputs)=> {
                 let engineer = new Engineer(inputs.name, inputs.id, inputs.email, inputs.github);
-                const head = cards.header()
-                
-                const store = cards.engineer(engineer)
-             
-                const foot = cards.footer()
-                
-                const concatenate = head + store + foot
-                fs.writeFile("./Develop/output/team.html", concatenate, function (err) {
-                    console.log(err)
-                })
-
-                
-
-                
-                // Team.splice(team.length-1,0,engineer.getHTML());
-                // makeTeam();
+                writeHTML(engineer)
+              
             })
         }
         else if (replies.role === "Manager"){
@@ -86,16 +72,8 @@ const cards = require("./Develop/templates/cards");
             ]).then((inputs)=>{
                 let manager = new Manager(inputs.name, inputs.id, inputs.email, inputs.office)
                 
-                const head = cards.header()
-                
-                const store = cards.manager(manager)
-             
-                const foot = cards.footer()
-                
-                const concatenate = head + store + foot
-                fs.writeFile("./Develop/output/team.html", concatenate, function (err) {
-                    console.log(err)
-                })
+                writeHTML(manager)
+              
             })
         }
         else if (replies.role === "Intern"){
@@ -123,16 +101,19 @@ const cards = require("./Develop/templates/cards");
             ]).then((inputs)=>{
                 let intern = new Intern(inputs.name, inputs.id, inputs.email, inputs.school)
 
-                const head = cards.header()
-                
-                const store = cards.intern(intern)
-             
-                const foot = cards.footer()
-                
-                const concatenate = head + store + foot
-                fs.writeFile("./Develop/output/team.html", concatenate, function (err) {
-                    console.log(err)
-                })
+                writeHTML(intern)
             });
         }
     })
+      
+    function writeHTML(employee) {
+        const head = cards.header()
+        const foot = cards.footer()
+        
+        const store = cards.manager(employee)
+
+        const concatenate = head + store + foot
+        fs.writeFile("./Develop/output/team.html", concatenate, function(err){
+            console.log(err)
+        })
+    }
