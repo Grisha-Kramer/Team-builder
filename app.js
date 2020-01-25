@@ -5,8 +5,9 @@ const Intern = require("./Develop/lib/Intern");
 const Manager = require("./Develop/lib/Manager");
 const Engineer = require("./Develop/lib/Engineer");
 const open = require("open");
+const cards = require("./Develop/templates/cards");
 
-function initialize() {
+// function initialize() {
     return inquirer
     .prompt ([
         {
@@ -41,9 +42,15 @@ function initialize() {
                 name: "email"
             }
             ]).then((inputs)=> {
-                let engineer = new Engineer(inputs.name, inputs.id, inputs.email, inputs.github)
-                Team.splice(team.length-1,0,engineer.getHTML());
-                makeTeam();
+                let engineer = new Engineer(inputs.name, inputs.id, inputs.email, inputs.github);
+                console.log(engineer)
+                const store = cards.engineer(engineer)
+                console.log(store)
+                fs.writeFile("team.html", store, function (err) {
+                    console.log(err)
+                })
+                // Team.splice(team.length-1,0,engineer.getHTML());
+                // makeTeam();
             })
         }
         else if (replies.role === "Manager"){
@@ -118,4 +125,4 @@ initalize()
   team.splice(team.length-1,0,manager.getHTML());
   buildTeam();
 })
-}}
+    }
