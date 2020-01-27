@@ -1,5 +1,5 @@
 const headerCard = function() {
-    return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
     <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
@@ -16,11 +16,11 @@ const headerCard = function() {
         <div class="container">
             <div class="col-md-12">
                 <div class="row">
-`
+`;
 };
 
-const managerCard = function (replies) {
-    return `<div class="card border-info mb-3 text-center" style="max-width: 18rem;">
+const managerCard = function(replies) {
+  return `<div class="card border-info mb-3 text-center" style="max-width: 18rem;">
     <div class="card-header">${replies.name}</div>
     <div class="card-body">
       <h5 class="card-title">${replies.id}</h5>
@@ -28,11 +28,11 @@ const managerCard = function (replies) {
       <p class="card-text">Office: ${replies.office}</p>
       <p class="card-text">ID: ${replies.id}</p>
     </div>
-  </div>`
+  </div>`;
 };
 
-const internCard = function (replies) {
-    return `<div class="card border-info mb-3 text-center" style="max-width: 18rem;">
+const internCard = function(replies) {
+  return `<div class="card border-info mb-3 text-center" style="max-width: 18rem;">
     <div class="card-header">${replies.name}</div>
     <div class="card-body">
       <h5 class="card-title">${replies.id}</h5>
@@ -41,11 +41,11 @@ const internCard = function (replies) {
       <p class="card-text">ID: ${replies.id}</p>
     
     </div>
-  </div>`
+  </div>`;
 };
 
-  const engineerCard = function (replies) {
-      return `<div class="card border-info mb-3 text-center" style="max-width: 18rem;">
+const engineerCard = function(replies) {
+  return `<div class="card border-info mb-3 text-center" style="max-width: 18rem;">
       <div class="card-header">${replies.name}</div>
       <div class="card-body">
         <h5 class="card-title">${replies.id}</h5>
@@ -54,20 +54,20 @@ const internCard = function (replies) {
         <p class="card-text">ID: ${replies.id}</p>
       
       </div>
-    </div>`
+    </div>`;
 };
 const footerCard = function() {
-    return `</div>
+  return `</div>
     </div>
 </div>
 </body>
-</html>`
+</html>`;
 };
 
 module.exports = {
-    manager: managerCard,
-    engineer: engineerCard,
-    intern: internCard,
-    header: headerCard,
-    footer: footerCard,
-}
+  manager: managerCard,
+  engineer: engineerCard,
+  intern: internCard,
+  header: headerCard,
+  footer: footerCard
+};
