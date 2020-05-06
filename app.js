@@ -18,35 +18,35 @@ function runAgain() {
         type: "list",
         message: "Select the role you wish to add",
         choices: ["Engineer", "Intern", "Manager"],
-        name: "role"
-      }
+        name: "role",
+      },
     ])
-    .then(replies => {
+    .then((replies) => {
       if (replies.role === "Engineer") {
         return inquirer
           .prompt([
             {
               type: "input",
               message: "What is your github username?",
-              name: "github"
+              name: "github",
             },
             {
               type: "input",
               message: "Enter name?",
-              name: "name"
+              name: "name",
             },
             {
               type: "input",
               message: "Input ID",
-              name: "id"
+              name: "id",
             },
             {
               type: "input",
               message: "Employee email?",
-              name: "email"
-            }
+              name: "email",
+            },
           ])
-          .then(inputs => {
+          .then((inputs) => {
             let engineer = new Engineer(
               inputs.name,
               inputs.id,
@@ -61,25 +61,25 @@ function runAgain() {
             {
               type: "input",
               message: "Enter manager name:",
-              name: "name"
+              name: "name",
             },
             {
               type: "input",
               message: "Enter ID",
-              name: "id"
+              name: "id",
             },
             {
               type: "input",
               message: "Enter email",
-              name: "email"
+              name: "email",
             },
             {
               type: "input",
               message: "Enter office number",
-              name: "office"
-            }
+              name: "office",
+            },
           ])
-          .then(inputs => {
+          .then((inputs) => {
             let manager = new Manager(
               inputs.name,
               inputs.id,
@@ -95,25 +95,25 @@ function runAgain() {
             {
               type: "input",
               message: "Enter Intern name:",
-              name: "name"
+              name: "name",
             },
             {
               type: "input",
               message: "Enter ID",
-              name: "id"
+              name: "id",
             },
             {
               type: "input",
               message: "Enter email",
-              name: "email"
+              name: "email",
             },
             {
               type: "input",
               message: "Enter school",
-              name: "school"
-            }
+              name: "school",
+            },
           ])
-          .then(inputs => {
+          .then((inputs) => {
             let intern = new Intern(
               inputs.name,
               inputs.id,

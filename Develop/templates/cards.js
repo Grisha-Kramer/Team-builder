@@ -1,4 +1,4 @@
-const headerCard = function() {
+const headerCard = function () {
   return `<!DOCTYPE html>
     <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
@@ -19,7 +19,7 @@ const headerCard = function() {
 `;
 };
 
-const managerCard = function(replies) {
+const managerCard = function (replies) {
   return `<div class="card border-info mb-3 text-center" style="max-width: 18rem;">
     <div class="card-header">${replies.name}</div>
     <div class="card-body">
@@ -31,7 +31,7 @@ const managerCard = function(replies) {
   </div>`;
 };
 
-const internCard = function(replies) {
+const internCard = function (replies) {
   return `<div class="card border-info mb-3 text-center" style="max-width: 18rem;">
     <div class="card-header">${replies.name}</div>
     <div class="card-body">
@@ -44,7 +44,7 @@ const internCard = function(replies) {
   </div>`;
 };
 
-const engineerCard = function(replies) {
+const engineerCard = function (replies) {
   return `<div class="card border-info mb-3 text-center" style="max-width: 18rem;">
       <div class="card-header">${replies.name}</div>
       <div class="card-body">
@@ -56,7 +56,7 @@ const engineerCard = function(replies) {
       </div>
     </div>`;
 };
-const footerCard = function() {
+const footerCard = function () {
   return `</div>
     </div>
 </div>
@@ -69,5 +69,5 @@ module.exports = {
   engineer: engineerCard,
   intern: internCard,
   header: headerCard,
-  footer: footerCard
+  footer: footerCard,
 };
